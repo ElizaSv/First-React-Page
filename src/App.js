@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from '../src/components/Header.js'
+import Content from '../src/components/Content.js'
+import Footer from '../src/components/Footer.js'
+import quotes from './data/data.js'
 
 function App() {
+  const quotesToBeRendered = quotes.map(quote => {
+    return <Content 
+      quote={quote.quote}
+      author={quote.author} />
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+      <div className='quote-wrapper'>
+        {quotesToBeRendered}
+      </div>
+      <Footer />
+    </>
+  )
 }
 
 export default App;
